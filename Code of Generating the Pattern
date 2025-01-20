@@ -1,0 +1,22 @@
+class pattern_generator;  
+   bit current_value;  
+function new();  
+        current_value = 0;   
+    endfunction  
+task generate_next();  
+        $write("%0d", current_value);   
+        current_value = ~current_value;   
+    endtask  
+endclass  
+  
+module tb_pattern_generator;  
+   pattern_generator pg;  
+ initial begin  
+     pg = new();  
+repeat (10) begin  
+            pg.generate_next();   
+        end  
+ $display();   
+        $finish;   
+    end  
+endmodule  
